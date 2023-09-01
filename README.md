@@ -2,7 +2,8 @@
 ToDo Check
 
 # 프로젝트 설명
-이 앱은 사용자가 할 일 목록을 관리하는 데 도움을 주는 애플리케이션입니다. 
+ToDo Check는 사용자가 할 일 목록을 관리하는 데 도움을 주는 애플리케이션입니다.  
+  
 사용자는 다양한 카테고리에 속하는 할 일을 추가, 수정, 삭제하고 완료 상태로 표시할 수 있습니다. 앱은 MVC 패턴을 따르며, 할 일 데이터를 관리하는 싱글톤 클래스, 할 일 목록을 표시하는 뷰 컨트롤러, 그리고 사용자 인터페이스를 담당하는 뷰로 구성되어 있습니다.
 
 # 구조 설명
@@ -20,7 +21,7 @@ MVC Architecture
 <p align="center"><img src="https://github.com/angwoo0503/ToDoCheck/assets/136118540/72e413f0-5b24-4adc-863b-e6060322d9a7" width="400" height="400"/></p>
 
 ## ToDo 앱의 라이프 사이클과 데이터 관리
-이 앱은 사용자가 할 일 목록을 관리하는 데 도움을 주는 애플리케이션입니다. 앱의 Life Cycle과 데이터 관리는 사용자 경험을 향상시키기 위해 신중하게 설계되었습니다. 아래에서 앱의 주요 라이프 사이클 이벤트와 데이터 관리 방식에 대해 설명하겠습니다.
+앱의 Life Cycle과 데이터 관리는 사용자 경험을 향상시키기 위해 신중하게 설계되었습니다. 아래에서 앱의 주요 라이프 사이클 이벤트와 데이터 관리 방식에 대해 설명하겠습니다.
 
 ## ToDo 앱의 주요 라이프 사이클 이벤트
 1. viewDidLoad: 각 뷰 컨트롤러가 처음 생성될 때 호출되는 메서드입니다. 이 메서드 내에서 초기화 및 설정 작업을 수행합니다. 예를 들어, 뷰 컨트롤러의 UI 요소를 설정하거나 초기 데이터를 불러오는 작업이 이루어집니다.
@@ -56,14 +57,14 @@ MVC Architecture
 
 # 참고 자료
 
-##고양이 이미지 API
-The Cat API 홈페이지: https://thecatapi.com
-The Cat API 문서: https://developers.thecatapi.com/
-사용 API: https://api.thecatapi.com/v1/images/search
-##강아지 이미지 API
-The Dog API 홈페이지: https://thedogapi.com
-The Dog API 문서: https://developers.thedogapi.com/
-사용 API: https://api.thedogapi.com/v1/images/search
+## 고양이 이미지 API
+- The Cat API 홈페이지: https://thecatapi.com  
+- The Cat API 문서: https://developers.thecatapi.com  
+- 사용 API: https://api.thecatapi.com/v1/images/search  
+## 강아지 이미지 API
+- The Dog API 홈페이지: https://thedogapi.com  
+- The Dog API 문서: https://developers.thedogapi.com  
+- 사용 API: https://api.thedogapi.com/v1/images/search  
 
-이 프로젝트는 Swift 언어와 UIKit 프레임워크를 사용하여 개발되었습니다.
+이 프로젝트는 Swift 언어와 UIKit 프레임워크를 사용하여 개발되었습니다.  
 프로젝트의 구조와 사용법을 자세하게 설명하였습니다. 추가적인 질문이나 설명이 필요한 부분이 있다면 언제든지 문의해주세요!
