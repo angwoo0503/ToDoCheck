@@ -12,9 +12,15 @@ class ToDoDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // UI 업데이트
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(didTapRightButton))
+//        navigationItem.title = "할 일"
         updateUI()
     }
-    
+//    @objc func didTapRightButton() {
+//        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//        let vc = storyBoard.instantiateViewController(withIdentifier: "CreateViewController")
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
     // UI 업데이트 메서드
     private func updateUI() {
         // ToDo 제목 표시
