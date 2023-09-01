@@ -70,20 +70,32 @@ class ToDoListViewController: UIViewController {
 // 테이블 뷰의 데이터 소스 관련 extension
 extension ToDoListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let category = ToDoManager.shared.uniqueCategories()[section]
-        let toDosInSection = ToDoManager.shared.toDos(inCategory: category)
-        return toDosInSection.count
+//        let category = ToDoManager.shared.uniqueCategories()[section]
+        switch section {
+        case 0: return ToDoManager.shared.toDos(inCategory: "Work").count
+        case 1: return ToDoManager.shared.toDos(inCategory: "Study").count
+        case 2: return ToDoManager.shared.toDos(inCategory: "Personal").count
+        case 3: return ToDoManager.shared.toDos(inCategory: "Others").count
+        default: return 0
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ToDoListTableViewCell
-        let category = ToDoManager.shared.uniqueCategories()[indexPath.section]
-        let toDosInSection = ToDoManager.shared.toDos(inCategory: category).sorted(by: { $0.priority < $1.priority })
-
-        if indexPath.row < toDosInSection.count {
-            cell.setToDo(toDosInSection[indexPath.row])
+        var toDo: ToDo
+        switch indexPath.section {
+        case 0: toDo = ToDoManager.shared.toDos(inCategory: "Work")[indexPath.row]
+        case 1: toDo = ToDoManager.shared.toDos(inCategory: "Study")[indexPath.row]
+        case 2: toDo = ToDoManager.shared.toDos(inCategory: "Personal")[indexPath.row]
+        case 3: toDo = ToDoManager.shared.toDos(inCategory: "Others")[indexPath.row]
+        default: return UITableViewCell()
         }
-
+//        let category = ToDoManager.shared.uniqueCategories()[indexPath.section]
+//        let toDosInSection = ToDoManager.shared.toDos(inCategory: category).sorted(by: { $0.priority < $1.priority })
+        print(toDo)
+        cell.setToDo(toDo)
+//        print(toDosInSection)
+//        print(category)
         return cell
     }
 
@@ -92,21 +104,43 @@ extension ToDoListViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return ToDoManager.shared.uniqueCategories().count
+        return 4
     }
 
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sortedCategories = ToDoManager.shared.uniqueCategories().sorted() // 카테고리를 알파벳 순으로 정렬
-        return sortedCategories[section]
+        switch section {
+        case 0: if ToDoManager.shared.toDos(inCategory: "Work").count == 0 { return nil }
+            return "Work"
+        case 1: if ToDoManager.shared.toDos(inCategory: "Study").count == 0 { return nil }
+            return "Study"
+        case 2: if ToDoManager.shared.toDos(inCategory: "Personal").count == 0 { return nil }
+            return "Personal"
+        case 3: if ToDoManager.shared.toDos(inCategory: "Others").count == 0 { return nil }
+            return "Others"
+        default: return ""
+        }
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let category = ToDoManager.shared.uniqueCategories()[section]
         let footerLabel = UILabel()
-        footerLabel.text = "총 \(ToDoManager.shared.toDos(inCategory: category).count)개의 항목이 있습니다."
-        footerLabel.textAlignment = .center
         footerLabel.textColor = .gray
-        return footerLabel
+        footerLabel.textAlignment = .center
+        switch section {
+        case 0: if ToDoManager.shared.toDos(inCategory: "Work").count == 0 { return nil }
+            footerLabel.text = "총 \(ToDoManager.shared.toDos(inCategory: category).count)개의 항목이 있습니다."
+            return footerLabel
+        case 1: if ToDoManager.shared.toDos(inCategory: "Study").count == 0 { return nil }
+            footerLabel.text = "총 \(ToDoManager.shared.toDos(inCategory: category).count)개의 항목이 있습니다."
+            return footerLabel
+        case 2: if ToDoManager.shared.toDos(inCategory: "Personal").count == 0 { return nil }
+            footerLabel.text = "총 \(ToDoManager.shared.toDos(inCategory: category).count)개의 항목이 있습니다."
+            return footerLabel
+        case 3: if ToDoManager.shared.toDos(inCategory: "Others").count == 0 { return nil }
+            footerLabel.text = "총 \(ToDoManager.shared.toDos(inCategory: category).count)개의 항목이 있습니다."
+            return footerLabel
+        default: return nil
+        }
     }
 
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

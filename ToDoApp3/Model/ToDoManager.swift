@@ -93,8 +93,8 @@ class ToDoManager {
 
     /// 고유한 카테고리 목록 조회
     func uniqueCategories() -> [String] {
-        let categories = toDos.map { $0.category }
-        return Array(Set(categories))
+//        let categories = toDos.map { $0.category }
+        return ["Work", "Study", "Personal", "Others"]
     }
 
     /// 특정 카테고리의 ToDo 항목 조회
